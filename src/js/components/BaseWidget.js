@@ -1,10 +1,11 @@
+/* eslint-disable linebreak-style */
+
 class BaseWidget {
   constructor(wrapperElement, initialValue) {
     const thisWidget = this;
 
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
-
     thisWidget.correctValue = initialValue;
   }
 
@@ -14,10 +15,10 @@ class BaseWidget {
     return thisWidget.correctValue;
   }
 
-  set Value(value) {
+  set value(value) {
     const thisWidget = this;
 
-    const newValue = thisWidget.parseInt(value);
+    const newValue = thisWidget.parseValue(value);
 
     if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
       thisWidget.correctValue = newValue;
@@ -43,14 +44,13 @@ class BaseWidget {
 
   renderValue() {
     const thisWidget = this;
-
-    thisWidget.dom.wrapper.innerHTML = thisWidget.correctValue;
+    thisWidget.dom.wrapper.innerHTML = thisWidget.value;
   }
 
   announce() {
     const thisWidget = this;
 
-    const event = new CustomEvent('update', {
+    const event = new CustomEvent('updated', {
       bubbles: true
     });
     thisWidget.dom.wrapper.dispatchEvent(event);

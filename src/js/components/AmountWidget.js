@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 import { settings, select } from '../settings.js';
 import BaseWidget from './BaseWidget.js';
 
@@ -8,10 +10,12 @@ class AmountWidget extends BaseWidget {
     const thisWidget = this;
 
     thisWidget.getElements(element);
-
     thisWidget.initActions();
 
+    // console.log('AmountWidget', thisWidget);
+    // console.log('constructor arguments', element);
   }
+
   getElements() {
     const thisWidget = this;
 
@@ -36,17 +40,18 @@ class AmountWidget extends BaseWidget {
     const thisWidget = this;
 
     thisWidget.dom.input.addEventListener('change', function () {
-      // thisWidget.setValue(thisWidget.dom.input.value)
+      // thisWidget.setValue(thisWidget.dom.input.value);
       thisWidget.value = thisWidget.dom.input.value;
     });
 
-    thisWidget.dom.linkDecrease.addEventListener('click', () => {
+    thisWidget.dom.linkDecrease.addEventListener('click', function () {
       event.preventDefault();
-      thisWidget.setValue(thisWidget.correctValue - 1);
+      thisWidget.setValue(thisWidget.value - 1);
     });
-    thisWidget.dom.linkIncrease.addEventListener('click', () => {
+
+    thisWidget.dom.linkIncrease.addEventListener('click', function () {
       event.preventDefault();
-      thisWidget.setValue(thisWidget.correctValue + 1);
+      thisWidget.setValue(thisWidget.value + 1);
     });
   }
 }
