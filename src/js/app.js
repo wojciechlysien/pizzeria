@@ -127,7 +127,6 @@ const app = {
     // console.log('templates:', templates);
 
     thisApp.initPages();
-
     thisApp.initData();
     // thisApp.initMenu();
     thisApp.initCart();
